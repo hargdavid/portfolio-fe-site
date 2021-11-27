@@ -1,16 +1,21 @@
 /** @jsxRuntime classic **/
 /** @jsx jsx */
+import { useEffect } from "react";
 import { jsx } from "theme-ui";
-import Hero from "../src/components/Hero/Hero";
-import { startPage } from "../__data__/startPage";
+import { mapBlogPostResult } from "../helpers/mappers/mapBlogPostResult";
+import { getBlogPost } from "../integrations/api/contentful/blogPost";
 
 const StartPage = () => {
-  const {
-    hero: { title, subTitle, img },
-  } = startPage;
+  useEffect(() => {
+    (async () => {
+      const res = await getBlogPost();
+      const mappedData = mapBlogPostResult(res);
+    })();
+  });
+
   return (
     <header>
-      <Hero title={title} subTitle={subTitle} image={img}></Hero>
+      <div>HEllo</div>
     </header>
   );
 };
