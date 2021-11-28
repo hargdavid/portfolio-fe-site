@@ -1,19 +1,17 @@
-import axios from "axios";
-import { createContentfulEndpoint } from "../helpers/createContentfulEndpoint";
+import { IBlogPostPage } from "../../../types/content/IBlogPostPage";
+import { getEntries } from "./entries";
+import { mapBlogPostResult } from "../../../helpers/mappers/mapBlogPostResult";
 
-export const getBlogPost = async (slug?: string): Promise<any> => {
-  const endpoint = createContentfulEndpoint("entries");
-  try {
-    const result = await axios.get(endpoint, {
-      params: {
-        access_token: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-        "fields.slug": "my first blog post",
-        content_type: "blogPost",
-      },
-    });
+export const getBlogPost = async (slug = "Home"): Promise<IBlogPostPage> => {
+  const res = await getEntries("blogPost", slug);
 
-    return result.data;
-  } catch (error) {
-    console.log({ message: error.message || error, error: error });
+  if (res.items.length > 0) {
+    return mapBlogPostResult(res);
+  } else {
+    return {
+      title: slug,
+      description: "",
+      blocks: [],
+    };
   }
 };
