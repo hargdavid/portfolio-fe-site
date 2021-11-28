@@ -35,8 +35,8 @@ const Footer: React.FC<Props> = ({ information }) => {
         <FooterElement title={"Author"} text={author} />
         <FooterElement title={"Address"} text={address} />
         <FooterElement title={"Mail"} text={mail} />
-        <FooterElement title={"Instagram"} text={instagram} />
-        <FooterElement title={"Facebook"} text={facebook} />
+        <FooterElement title={"Instagram"} link={instagram} />
+        <FooterElement title={"Facebook"} link={facebook} />
       </ul>
     </footer>
   );
