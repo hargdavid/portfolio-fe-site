@@ -642,4 +642,23 @@ export const theme = makeTheme({
       "1000": "1000ms",
     },
   },
+  navigation: {
+    links: {
+      p: 1,
+      display: "block",
+      fontFamily: "mono",
+      textTransform: "uppercase",
+      color: "grayDark",
+      textDecoration: "none",
+      "&:hover": {
+        color: "primaryHover",
+      },
+    },
+  },
+  footer: {
+    listItem: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
+  },
 });

@@ -8,10 +8,8 @@ export const mapInformation = (
   data: IContentfulResponse
 ): IGeneralInformation => {
   const generalInformation: IGeneralInformation = emptyGeneralInforamtion;
-  console.log(data);
   const { fields } = data.items[0];
   Object.keys(fields).map((fieldType) => {
-    console.log(fieldType);
     switch (fieldType) {
       case CMS_CONTENT_TYPES.FACEBOOK:
       case CMS_CONTENT_TYPES.INSTAGRAM:

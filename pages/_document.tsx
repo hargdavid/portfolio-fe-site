@@ -4,7 +4,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 const MyDocument = () => {
   return (
     <Html lang="sv">
-      <Head></Head>
+      <Head />
       <body>
         <Main />
         <NextScript />
