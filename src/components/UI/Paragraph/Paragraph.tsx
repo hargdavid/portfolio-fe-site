@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Paragraph: React.FC<Props> = ({ text }) => {
-  return <p>{text}</p>;
+  return <p sx={{ fontFamily: "body", fontSize: 1, m: 0, mb: 3 }}>{text}</p>;
 };
 
 export default Paragraph;

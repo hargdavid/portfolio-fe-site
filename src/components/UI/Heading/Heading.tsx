@@ -8,7 +8,11 @@ type Props = {
 };
 
 const Heading: React.FC<Props> = ({ text }) => {
-  return <h1>{text}</h1>;
+  return (
+    <h1 sx={{ fontFamily: "mono", fontSize: [5, , 7], m: 0, mb: [1, , , 2] }}>
+      {text}
+    </h1>
+  );
 };
 
 export default Heading;

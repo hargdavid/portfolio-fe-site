@@ -644,7 +644,8 @@ export const theme = makeTheme({
   },
   navigation: {
     links: {
-      p: 1,
+      pr: 4,
+      pl: 4,
       display: "block",
       fontFamily: "mono",
       textTransform: "uppercase",
@@ -657,8 +658,7 @@ export const theme = makeTheme({
   },
   footer: {
     listItem: {
-      display: "flex",
-      justifyContent: "space-between",
+      mt: 2,
     },
   },
 });

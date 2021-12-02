@@ -1,15 +1,18 @@
-/** @jsxRuntime classic **/
 /** @jsx jsx */
+/** @jsxRuntime classic **/
 import { jsx } from "theme-ui";
-import { INavigation } from "../types/content/INavigation";
-import { IBlogPostPage } from "../types/content/IBlogPostPage";
-import { IGeneralInformation } from "../types/content/IGeneralInformation";
-import Layout from "../src/components/Layout/Layout";
+
 import Head from "next/head";
 import React, { useEffect } from "react";
-import CMSContent from "../src/components/CMSContent/CMSContent";
-import { basePageInformation } from "../integrations/api/contentful/basePageInformation";
-import { getStartPage } from "../integrations/api/contentful/startPage";
+import { IBlogPostPage } from "../../types/content/IBlogPostPage";
+import { INavigation } from "../../types/content/INavigation";
+import { IGeneralInformation } from "../../types/content/IGeneralInformation";
+import Layout from "../../src/components/Layout/Layout";
+import CMSContent from "../../src/components/CMSContent/CMSContent";
+import { getBlogPost } from "../../integrations/api/contentful/blogPost";
+import { getNavigation } from "../../integrations/api/contentful/navigation";
+import { getInformation } from "../../integrations/api/contentful/information";
+import { basePageInformation } from "../../integrations/api/contentful/basePageInformation";
 
 type Props = {
   pageContent: IBlogPostPage;
@@ -17,15 +20,9 @@ type Props = {
   information: IGeneralInformation;
 };
 
-const StartPage: React.FC<Props> = ({
-  pageContent,
-  navigation,
-  information,
-}) => {
+const Contact: React.FC<Props> = ({ pageContent, navigation, information }) => {
   const { favicon } = information;
   const { title, description } = pageContent;
-
-  console.log("pageContent", pageContent.blocks);
 
   return (
     <>
@@ -44,7 +41,7 @@ const StartPage: React.FC<Props> = ({
 };
 
 export const getStaticProps = async () => {
-  const pageContent: IBlogPostPage = await getStartPage();
+  const pageContent: IBlogPostPage = await getBlogPost("my-first-blog-post"); //TODO change
   const { navigation, information } = await basePageInformation();
   return {
     props: {
@@ -55,4 +52,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default StartPage;
+export default Contact;

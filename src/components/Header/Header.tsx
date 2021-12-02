@@ -16,26 +16,37 @@ const Header: React.FC<Props> = ({ navigation, logo }) => {
   return (
     <header
       sx={{
-        p: 2,
-        display: "flex",
-        alignItems: "center",
+        p: 3,
         backgroundColor: "light",
+        boxShadow: "1px -8px 11px 8px rgb(0 0 0 / 30%)",
+        position: "fixed",
+        width: "100%",
+        zIndex: 2,
       }}
     >
-      <Link href="/">
-        <a href="/">
-          <img
-            alt={logo.title}
-            src={logo.url}
-            sx={{
-              height: "100px",
-              p: 1,
-            }}
-          />
-        </a>
-      </Link>
+      <div
+        sx={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Link href="/">
+          <a href="/">
+            <img
+              alt={logo.title}
+              src={logo.url}
+              sx={{
+                height: "75px",
+                p: 1,
+              }}
+            />
+          </a>
+        </Link>
 
-      <Navigation navigation={navigation} />
+        <Navigation navigation={navigation} />
+      </div>
     </header>
   );
 };

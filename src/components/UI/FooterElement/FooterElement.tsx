@@ -11,21 +11,21 @@ type Props = {
 };
 
 const FooterElement: React.FC<Props> = ({ title, text, link }) => {
+  const renderFooterElement = () => (
+    <>
+      <p sx={{ fontWeight: "semibold", m: 0, fontFamily: "mono" }}>{title}</p>
+      <p sx={{ mt: 1, fontFamily: "mono" }}>{text}</p>
+    </>
+  );
+
   return (
     <>
       {title.length > 0 && (
         <li sx={{ variant: "footer.listItem" }}>
           {link ? (
-            <a href={link}>
-              <Paragraph text={title} />
-            </a>
+            <a href={link}>{renderFooterElement()}</a>
           ) : (
-            text && (
-              <>
-                <Paragraph text={title} />
-                <Paragraph text={text} />
-              </>
-            )
+            renderFooterElement()
           )}
         </li>
       )}

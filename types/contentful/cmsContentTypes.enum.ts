@@ -8,4 +8,9 @@ export enum CMS_CONTENT_TYPES {
   LOGO = "logo",
   FACEBOOK = "facebook",
   INSTAGRAM = "instagram",
+  UNORDEREDLIST = "unordered-list",
+  ORDEREDLIST = "ordered-list",
+  H1 = "heading-1",
+  HYPERLINK = "hyperlink",
+  HEADER_IMAGE = "headerImage",
 }

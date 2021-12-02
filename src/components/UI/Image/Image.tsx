@@ -10,7 +10,7 @@ type Props = {
 
 const Image: React.FC<Props> = ({ image }) => {
   const { url, title } = image;
-  return <img sx={{ maxWidth: "100%" }} alt={title} src={url} />;
+  return <img sx={{ maxWidth: "100%", width: "100%" }} alt={title} src={url} />;
 };
 
 export default Image;

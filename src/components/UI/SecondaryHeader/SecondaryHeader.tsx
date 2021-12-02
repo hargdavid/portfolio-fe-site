@@ -8,7 +8,7 @@ type Props = {
 };
 
 const SecondaryHeading: React.FC<Props> = ({ text }) => {
-  return <h4>{text}</h4>;
+  return <h4 sx={{ fontFamily: "mono", fontSize: 2, m: 0, mb: 3 }}>{text}</h4>;
 };
 
 export default SecondaryHeading;
