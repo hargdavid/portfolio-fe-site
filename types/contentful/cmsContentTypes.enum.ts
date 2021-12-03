@@ -24,4 +24,8 @@ export enum CMS_CONTENT_TYPES {
   ADDRESS = "address",
   MAIL = "mail",
   PHONE = "phone",
+  LISTING = "listing",
+  EMBEDDED_ENTRY_BLOCK = "embedded-entry-block",
+  LIST_TITLE = "listTitle",
+  SHOWLIST = "showList",
 }

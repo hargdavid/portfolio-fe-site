@@ -1,7 +1,7 @@
 /** @jsxRuntime classic **/
 /** @jsx jsx */
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import { jsx } from "theme-ui";
 import { basePageInformation } from "../integrations/api/contentful/basePageInformation";
 import { getStartPage } from "../integrations/api/contentful/startPage";
@@ -25,6 +25,13 @@ const StartPage: React.FC<Props> = ({
 }) => {
   const { favicon } = information;
   const { title, description, blocks, heroComponent } = pageContent;
+
+  useEffect(() => {
+    (async () => {
+      const pageContent: IStartPage = await getStartPage();
+      console.log("pageContent", pageContent);
+    })();
+  }, []);
 
   return (
     <>

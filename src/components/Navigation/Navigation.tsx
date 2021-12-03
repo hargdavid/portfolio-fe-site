@@ -33,8 +33,6 @@ export const Navigation: React.FC<Props> = ({ navigation }) => {
           {navigation.links.map((linkEl, key) => {
             const { external, link, name } = linkEl;
             const isActive = currentPath === link;
-            console.log("isActive", isActive);
-
             if (isActive) {
               return (
                 <p
