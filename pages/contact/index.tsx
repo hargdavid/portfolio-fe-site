@@ -4,45 +4,49 @@ import Head from "next/head";
 import React from "react";
 import { jsx } from "theme-ui";
 import { basePageInformation } from "../../integrations/api/contentful/basePageInformation";
-import { getBlogPost } from "../../integrations/api/contentful/blogPost";
-import CMSContent from "../../src/components/CMSContent/CMSContent";
+import { getContactPage } from "../../integrations/api/contentful/contactPage";
+import ContactSection from "../../src/components/ContactSection/ContactSection";
 import Layout from "../../src/components/Layout/Layout";
-import { IBlogPostPage } from "../../types/content/IBlogPostPage";
+import { IContactPage } from "../../types/content/IContactPage";
 import { IGeneralInformation } from "../../types/content/IGeneralInformation";
 import { INavigation } from "../../types/content/INavigation";
 
 type Props = {
-  pageContent: IBlogPostPage;
+  contactInformation: IContactPage;
   navigation: INavigation;
   information: IGeneralInformation;
 };
 
-const Contact: React.FC<Props> = ({ pageContent, navigation, information }) => {
+const Contact: React.FC<Props> = ({
+  navigation,
+  information,
+  contactInformation,
+}) => {
   const { favicon } = information;
-  const { title, description, blocks } = pageContent;
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{contactInformation.title}</title>
         <link rel="icon" type={favicon.type} href={favicon.url} />
-        <meta name="description" content={description} />
+        <meta name="description" content={contactInformation.title} />{" "}
+        {/* TODO change */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout navigation={navigation} information={information}>
-        <CMSContent blocks={blocks} />
+        <ContactSection contact={contactInformation} />
       </Layout>
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  const pageContent: IBlogPostPage = await getBlogPost("my-first-blog-post"); //TODO change
   const { navigation, information } = await basePageInformation();
+  const contactInformation = await getContactPage();
   return {
     props: {
-      pageContent,
+      contactInformation,
       navigation,
       information,
     },

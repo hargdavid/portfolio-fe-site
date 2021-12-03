@@ -1,6 +1,6 @@
 import { mapInformation } from "../../../helpers/mappers/mapInformation";
 import { IGeneralInformation } from "../../../types/content/IGeneralInformation";
-import { emptyGeneralInforamtion } from "../../../__data__/emptyGeneralInformation";
+import { emptyGeneralInformation } from "../../../__data__/emptyGeneralInformation";
 import { getEntries } from "./entries";
 
 export const getInformation = async (): Promise<IGeneralInformation> => {
@@ -8,6 +8,6 @@ export const getInformation = async (): Promise<IGeneralInformation> => {
   if (res.items.length > 0) {
     return mapInformation(res);
   } else {
-    return emptyGeneralInforamtion;
+    return emptyGeneralInformation;
   }
 };

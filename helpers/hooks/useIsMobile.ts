@@ -6,6 +6,9 @@ export const useIsMobile = (): boolean => {
   const [isMobile, setIsMobile] = useState<boolean>(true);
 
   useEffect(() => {
+    if (window) {
+      setIsMobile(window.innerWidth < BREAKPOINTS.md);
+    }
     if (isClient) {
       (window as Window).addEventListener("resize", () => {
         setIsMobile(window.innerWidth < BREAKPOINTS.md);

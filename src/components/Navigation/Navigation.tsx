@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { jsx } from "theme-ui";
+import { isClient } from "../../../helpers/browserCheck";
 import { useIsMobile } from "../../../helpers/hooks/useIsMobile";
 import { INavigation } from "../../../types/content/INavigation";
 import Menu from "../Menu/Menu";
@@ -13,6 +14,7 @@ type Props = {
 
 export const Navigation: React.FC<Props> = ({ navigation }) => {
   const isMobile = useIsMobile();
+  const currentPath = isClient ? window.location.pathname : "";
 
   return (
     <>
@@ -30,9 +32,22 @@ export const Navigation: React.FC<Props> = ({ navigation }) => {
         >
           {navigation.links.map((linkEl, key) => {
             const { external, link, name } = linkEl;
-            console.log("external", external);
+            const isActive = currentPath === link;
+            console.log("isActive", isActive);
 
-            if (external) {
+            if (isActive) {
+              return (
+                <p
+                  key={key}
+                  sx={{
+                    variant: "navigation.links",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {name}
+                </p>
+              );
+            } else if (external) {
               return (
                 <a
                   key={key}

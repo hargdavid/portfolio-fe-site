@@ -1,5 +1,4 @@
 import { IContentBlock } from "../../types/content/IContentBlock";
-import { IRichTextField } from "../../types/content/IRichTextField";
 import { CMS_CONTENT_TYPES } from "../../types/contentful/cmsContentTypes.enum";
 import { mapImage } from "./mapImage";
 
@@ -10,7 +9,6 @@ export const mapFields = (
   const blocks: IContentBlock[] = [];
 
   Object.keys(fields).map((field) => {
-    console.log(field);
     switch (field) {
       case CMS_CONTENT_TYPES.CONTENT_BLOCK: {
         const blocksValues = [];

@@ -26,8 +26,6 @@ const StartPage: React.FC<Props> = ({
   const { favicon } = information;
   const { title, description, blocks, heroComponent } = pageContent;
 
-  console.log(heroComponent);
-
   return (
     <>
       <Head>

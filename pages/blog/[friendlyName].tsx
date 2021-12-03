@@ -1,6 +1,5 @@
 /** @jsxRuntime classic **/
 /** @jsx jsx */
-import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import React from "react";
 import { jsx } from "theme-ui";
@@ -37,11 +36,9 @@ const Contact: React.FC<Props> = ({ pageContent, navigation, information }) => {
   );
 };
 
-export const getStaticProps = async () => {
-  const router = useRouter();
-  const { friendlyName } = router.query;
-  console.log(friendlyName);
-  const pageContent: IBlogPostPage = await getBlogPost("my-first-blog-post"); //TODO change
+export const getStaticProps = async (context) => {
+  const friendlyName = context.params.friendlyName;
+  const pageContent: IBlogPostPage = await getBlogPost(friendlyName.toString());
   const { navigation, information } = await basePageInformation();
   return {
     props: {
@@ -49,6 +46,13 @@ export const getStaticProps = async () => {
       navigation,
       information,
     },
+  };
+};
+
+export const getStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: "blocking",
   };
 };
 
