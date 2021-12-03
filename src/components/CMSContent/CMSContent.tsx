@@ -2,24 +2,33 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "theme-ui";
-import { IBlogPostPage } from "../../../types/content/IBlogPostPage";
+import { IContentBlock } from "../../../types/content/IContentBlock";
 import { IImage } from "../../../types/content/IImage";
 import { IRichTextField } from "../../../types/content/IRichTextField";
 import { CMS_CONTENT_TYPES } from "../../../types/contentful/cmsContentTypes.enum";
 import Heading from "../UI/Heading/Heading";
 import Image from "../UI/Image/Image";
+import Link from "../UI/Link/Link";
 import List from "../UI/List/List";
 import Paragraph from "../UI/Paragraph/Paragraph";
-import Link from "../UI/Link/Link";
 
 type Props = {
-  pageContent: IBlogPostPage;
+  blocks: IContentBlock[];
 };
 
-const CMSContent: React.FC<Props> = ({ pageContent }) => {
+const CMSContent: React.FC<Props> = ({ blocks }) => {
   return (
-    <>
-      {pageContent.blocks.map((block, key) => {
+    <section
+      sx={{
+        p: [3, , , 0],
+        pt: [4, 4, 4, 4],
+        pb: [4, 4, 4, 4],
+        overflowX: "hidden",
+        maxWidth: "1100px",
+        m: "0 auto",
+      }}
+    >
+      {blocks.map((block, key) => {
         switch (block.type) {
           case CMS_CONTENT_TYPES.CONTENT_BLOCK: {
             const value = block.value as IRichTextField[];
@@ -59,6 +68,8 @@ const CMSContent: React.FC<Props> = ({ pageContent }) => {
               </article>
             );
           }
+          case CMS_CONTENT_TYPES.START_TEXT:
+            break;
           case CMS_CONTENT_TYPES.HERO_IMAGE:
           case CMS_CONTENT_TYPES.CONTENT_IMAGE:
             return <Image key={key} image={block.value as IImage} />;
@@ -66,7 +77,7 @@ const CMSContent: React.FC<Props> = ({ pageContent }) => {
             break;
         }
       })}
-    </>
+    </section>
   );
 };
 

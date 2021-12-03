@@ -1,18 +1,19 @@
 /** @jsxRuntime classic **/
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { INavigation } from "../types/content/INavigation";
-import { IBlogPostPage } from "../types/content/IBlogPostPage";
-import { IGeneralInformation } from "../types/content/IGeneralInformation";
-import Layout from "../src/components/Layout/Layout";
 import Head from "next/head";
-import React, { useEffect } from "react";
-import CMSContent from "../src/components/CMSContent/CMSContent";
+import React from "react";
+import { jsx } from "theme-ui";
 import { basePageInformation } from "../integrations/api/contentful/basePageInformation";
 import { getStartPage } from "../integrations/api/contentful/startPage";
+import CMSContent from "../src/components/CMSContent/CMSContent";
+import HeroComponent from "../src/components/HeroComponent/HeroComponent";
+import Layout from "../src/components/Layout/Layout";
+import { IGeneralInformation } from "../types/content/IGeneralInformation";
+import { INavigation } from "../types/content/INavigation";
+import { IStartPage } from "../types/content/IStartPage";
 
 type Props = {
-  pageContent: IBlogPostPage;
+  pageContent: IStartPage;
   navigation: INavigation;
   information: IGeneralInformation;
 };
@@ -23,9 +24,9 @@ const StartPage: React.FC<Props> = ({
   information,
 }) => {
   const { favicon } = information;
-  const { title, description } = pageContent;
+  const { title, description, blocks, heroComponent } = pageContent;
 
-  console.log("pageContent", pageContent.blocks);
+  console.log(heroComponent);
 
   return (
     <>
@@ -37,14 +38,15 @@ const StartPage: React.FC<Props> = ({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout navigation={navigation} information={information}>
-        <CMSContent pageContent={pageContent} />
+        <HeroComponent heroComponent={heroComponent} />
+        <CMSContent blocks={blocks} />
       </Layout>
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  const pageContent: IBlogPostPage = await getStartPage();
+  const pageContent: IStartPage = await getStartPage();
   const { navigation, information } = await basePageInformation();
   return {
     props: {

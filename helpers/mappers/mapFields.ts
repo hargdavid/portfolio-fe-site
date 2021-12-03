@@ -1,11 +1,12 @@
 import { IContentBlock } from "../../types/content/IContentBlock";
+import { IRichTextField } from "../../types/content/IRichTextField";
 import { CMS_CONTENT_TYPES } from "../../types/contentful/cmsContentTypes.enum";
 import { mapImage } from "./mapImage";
 
 export const mapFields = (
   fields: Record<string, any>[],
   includes: Record<string, any>
-) => {
+): IContentBlock[] => {
   const blocks: IContentBlock[] = [];
 
   Object.keys(fields).map((field) => {
@@ -14,7 +15,6 @@ export const mapFields = (
       case CMS_CONTENT_TYPES.CONTENT_BLOCK: {
         const blocksValues = [];
         fields[field].content.map((element) => {
-          console.log(element.nodeType);
           switch (element.nodeType) {
             case CMS_CONTENT_TYPES.ORDEREDLIST:
             case CMS_CONTENT_TYPES.UNORDEREDLIST:
@@ -30,7 +30,6 @@ export const mapFields = (
                 (el) => el.nodeType === CMS_CONTENT_TYPES.HYPERLINK
               );
               if (isLink) {
-                console.log(isLink);
                 blocksValues.push({
                   type: CMS_CONTENT_TYPES.HYPERLINK,
                   value: isLink.content.map((el) => el.value).toString(),

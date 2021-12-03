@@ -1,11 +1,11 @@
 import { IGeneralInformation } from "../types/content/IGeneralInformation";
+import { emptyImageState } from "./emptyImageState";
 
-export const emptyGeneralInforamtion: IGeneralInformation = {
+export const emptyGeneralInformation: IGeneralInformation = {
   description: "",
-  logo: {
-    logoUrl: "",
-    faviconUrl: "",
-  },
+  logo: emptyImageState,
+  favicon: emptyImageState,
+  author: "",
   address: "",
   mail: "",
   social: {

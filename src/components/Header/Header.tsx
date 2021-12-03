@@ -30,6 +30,7 @@ const Header: React.FC<Props> = ({ navigation, logo }) => {
           margin: "0 auto",
           display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
         <Link href="/">
@@ -44,7 +45,6 @@ const Header: React.FC<Props> = ({ navigation, logo }) => {
             />
           </a>
         </Link>
-
         <Navigation navigation={navigation} />
       </div>
     </header>

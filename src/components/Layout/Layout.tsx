@@ -18,19 +18,8 @@ const Layout: React.FC<Props> = ({ navigation, children, information }) => {
   return (
     <>
       <Header logo={logo} navigation={navigation} />
-      <div sx={{ height: "120px" }} />
-      <main
-        sx={{
-          p: [3, , , 0],
-          pt: [4, 4, 4, 4],
-          pb: [4, 4, 4, 4],
-          overflowX: "hidden",
-          maxWidth: "1100px",
-          m: "0 auto",
-        }}
-      >
-        {children}
-      </main>
+      <div sx={{ height: "114px" }} />
+      <main sx={{ overflowX: "hidden" }}>{children}</main>
       <Footer information={information} />
     </>
   );

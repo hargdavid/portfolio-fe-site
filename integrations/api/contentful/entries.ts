@@ -15,7 +15,6 @@ export const getEntries = async (
         "fields.slug": slug,
       },
     });
-
     return result.data;
   } catch (error) {
     console.log({ message: error.message || error, error: error });

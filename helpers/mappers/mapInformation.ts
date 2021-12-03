@@ -1,13 +1,13 @@
 import { IGeneralInformation } from "../../types/content/IGeneralInformation";
 import { CMS_CONTENT_TYPES } from "../../types/contentful/cmsContentTypes.enum";
 import { IContentfulResponse } from "../../types/contentful/IContentfulResponse";
-import { emptyGeneralInforamtion } from "../../__data__/emptyGeneralInformation";
+import { emptyGeneralInformation } from "../../__data__/emptyGeneralInformation";
 import { mapImage } from "./mapImage";
 
 export const mapInformation = (
   data: IContentfulResponse
 ): IGeneralInformation => {
-  const generalInformation: IGeneralInformation = emptyGeneralInforamtion;
+  const generalInformation: IGeneralInformation = emptyGeneralInformation;
   const { fields } = data.items[0];
   Object.keys(fields).map((fieldType) => {
     switch (fieldType) {

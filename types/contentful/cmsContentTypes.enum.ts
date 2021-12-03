@@ -13,4 +13,5 @@ export enum CMS_CONTENT_TYPES {
   H1 = "heading-1",
   HYPERLINK = "hyperlink",
   HEADER_IMAGE = "headerImage",
+  START_TEXT = "startpageText",
 }

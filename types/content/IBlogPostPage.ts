@@ -1,7 +1,3 @@
-import { IContentBlock } from "./IContentBlock";
+import { IPageBase } from "./IPageBase";
 
-export interface IBlogPostPage {
-  title: string;
-  description: string;
-  blocks: IContentBlock[];
-}
+export interface IBlogPostPage extends IPageBase {}

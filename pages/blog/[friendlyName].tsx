@@ -1,19 +1,16 @@
 /** @jsxRuntime classic **/
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import React from "react";
-import { IBlogPostPage } from "../../types/content/IBlogPostPage";
-import { INavigation } from "../../types/content/INavigation";
-import { IGeneralInformation } from "../../types/content/IGeneralInformation";
-import Layout from "../../src/components/Layout/Layout";
-import CMSContent from "../../src/components/CMSContent/CMSContent";
-import { getBlogPost } from "../../integrations/api/contentful/blogPost";
-import { getNavigation } from "../../integrations/api/contentful/navigation";
-import { getInformation } from "../../integrations/api/contentful/information";
-import { useRouter } from "next/dist/client/router";
+import { jsx } from "theme-ui";
 import { basePageInformation } from "../../integrations/api/contentful/basePageInformation";
+import { getBlogPost } from "../../integrations/api/contentful/blogPost";
+import CMSContent from "../../src/components/CMSContent/CMSContent";
+import Layout from "../../src/components/Layout/Layout";
+import { IBlogPostPage } from "../../types/content/IBlogPostPage";
+import { IGeneralInformation } from "../../types/content/IGeneralInformation";
+import { INavigation } from "../../types/content/INavigation";
 
 type Props = {
   pageContent: IBlogPostPage;
@@ -23,7 +20,7 @@ type Props = {
 
 const Contact: React.FC<Props> = ({ pageContent, navigation, information }) => {
   const { favicon } = information;
-  const { title, description } = pageContent;
+  const { title, description, blocks } = pageContent;
   return (
     <>
       <Head>
@@ -34,7 +31,7 @@ const Contact: React.FC<Props> = ({ pageContent, navigation, information }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout navigation={navigation} information={information}>
-        <CMSContent pageContent={pageContent} />
+        <CMSContent blocks={blocks} />
       </Layout>
     </>
   );
