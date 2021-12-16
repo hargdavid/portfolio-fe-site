@@ -1,0 +1,3 @@
+Host: ssh.stefanharg.se
+Username: stefanharg.se
+Port: 22
