@@ -1,11 +1,13 @@
 import { IStartPage } from "../types/content/IStartPage";
 import { emptyBasePageState } from "./emptyBasePageState";
-import { emptyImageState } from "./emptyImageState";
+import { emptyContentBlock } from "./emptyContentBlock";
+import { emptyList } from "./emptyList";
 
 export const emptyStartPageState: IStartPage = {
   ...emptyBasePageState,
   heroComponent: {
-    title: "",
-    image: emptyImageState,
+    title: emptyContentBlock,
+    image: emptyContentBlock,
   },
+  list: emptyList,
 };
